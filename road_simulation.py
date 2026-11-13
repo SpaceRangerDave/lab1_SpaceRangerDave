@@ -29,7 +29,16 @@ road = [
 # TODO 1: Return True only if sign is text AND is "bus", "zebra",
 # or a number from 20 to 100 written as text (e.g. "80"). Otherwise False.
 def is_valid_sign(sign):
-    pass
+    if not isinstance(sign, str):
+        return False
+    
+    if sign in ("bus", "zebra"):
+        return True
+    
+    if sign.isdigit():
+        return 20 <= int(sign) <= 100
+    
+    return False
 
 
 # TODO 2: Return "bus", "zebra", "speed" (a number) or "road" (anything else).
