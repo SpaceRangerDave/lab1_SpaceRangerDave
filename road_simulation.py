@@ -125,8 +125,11 @@ def ask_for_number(question, low, high):
 # TODO 8: Insert sign at position. Return False if position is not from 0 to len(road_list).
 # Otherwise insert and return True.
 def insert_sign(road_list, sign, position):
-    pass
-
+    if position < 0 or position > len(road_list):
+        return False
+    
+    road_list.insert(position, sign)
+    return True
 
 # TODO 9: Replace the sign at index with a new sign. Return False if index is not
 # from 0 to len(road_list) - 1. Otherwise replace it and return True.
