@@ -43,8 +43,13 @@ def is_valid_sign(sign):
 
 # TODO 2: Return "bus", "zebra", "speed" (a number) or "road" (anything else).
 def get_sign_type(sign):
-    pass
-
+    if sign in ("bus", "zebra"):
+        return sign
+    
+    if isinstance(sign, str) and sign.isdigit():
+        return "speed"
+    
+    return "road"
 
 # ==================== PART 2: TAKE ACTION ====================
 
@@ -102,3 +107,4 @@ if __name__ == "__main__":
     import sys
     import transit_program
     transit_program.run(sys.modules[__name__])
+
