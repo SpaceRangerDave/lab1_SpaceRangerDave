@@ -15,3 +15,11 @@ echo "Found the file: $log_file"
 # count how many times the simulation was run
 sessions=$(grep -c "Session" "$log_file")
 echo "Total sessions: $sessions"
+
+# counts how many times the car stopped at a zebra
+zebras=$(grep -c "zebra" "$log_file")
+echo "Zebra stops: $zebras"
+
+# counts how many times the car changed lanes
+lane_changes=$(grep -c "lane" "$log_file")
+echo "Lane changes: $lane_changes"
