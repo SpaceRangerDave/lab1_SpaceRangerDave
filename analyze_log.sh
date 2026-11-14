@@ -11,3 +11,7 @@ if [ ! -f "$log_file" ]; then
 fi
 
 echo "Found the file: $log_file"
+
+# count how many times the simulation was run
+sessions=$(grep -c "Session" "$log_file")
+echo "Total sessions: $sessions"
