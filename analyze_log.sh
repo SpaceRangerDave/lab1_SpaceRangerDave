@@ -12,22 +12,22 @@ fi
 
 echo "Found the file: $log_file"
 
-# count how many times the simulation was run
-sessions=$(grep -c "Session" "$log_file")
+# counts how many times the simulation was run (matches the exact text in the log)
+sessions=$(grep -c "New session started" "$log_file")
 echo "Total sessions: $sessions"
 
 # counts how many times the car stopped at a zebra
-zebras=$(grep -c "zebra" "$log_file")
+zebras=$(grep -c "Zebra crossing!" "$log_file")
 echo "Zebra stops: $zebras"
 
 # counts how many times the car changed lanes
-lane_changes=$(grep -c "lane" "$log_file")
+lane_changes=$(grep -c "Changing lane" "$log_file")
 echo "Lane changes: $lane_changes"
 
-# gets the driver name from the last run in the log
-driver=$(grep "Driver" "$log_file" | tail -n 1)
+# gets the driver name from the last run, splits by colon, and trims spaces
+driver=$(grep "Driver" "$log_file" | tail -n 1 | awk -F':' '{print $2}' | xargs)
 echo "Latest trip: $driver"
 
-# gets the top speed from the last run in the log
-top_speed=$(grep "speed" "$log_file" | tail -n 1)
+# gets the top speed from the last run, splits by colon, and trims spaces
+top_speed=$(grep "Top speed" "$log_file" | tail -n 1 | awk -F':' '{print $2}' | xargs)
 echo "Top speed: $top_speed"
