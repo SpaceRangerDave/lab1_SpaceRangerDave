@@ -23,3 +23,11 @@ echo "Zebra stops: $zebras"
 # counts how many times the car changed lanes
 lane_changes=$(grep -c "lane" "$log_file")
 echo "Lane changes: $lane_changes"
+
+# gets the driver name from the last run in the log
+driver=$(grep "Driver" "$log_file" | tail -n 1)
+echo "Latest trip: $driver"
+
+# gets the top speed from the last run in the log
+top_speed=$(grep "speed" "$log_file" | tail -n 1)
+echo "Top speed: $top_speed"
