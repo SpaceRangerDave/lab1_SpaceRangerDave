@@ -25,9 +25,9 @@ lane_changes=$(grep -c "Changing lane" "$log_file")
 echo "Lane changes: $lane_changes"
 
 # gets the driver name from the last run, splits by colon, and trims spaces
-driver=$(grep "Driver" "$log_file" | tail -n 1 | awk -F':' '{print $2}' | xargs)
+driver=$(grep "Driver" "$log_file" | tail -n 1 | awk -F' : ' '{print $2}')
 echo "Latest trip: $driver"
 
 # gets the top speed from the last run, splits by colon, and trims spaces
-top_speed=$(grep "Top speed" "$log_file" | tail -n 1 | awk -F':' '{print $2}' | xargs)
+top_speed=$(grep "Top speed" "$log_file" | tail -n 1 | awk -F' : ' '{print $2}')
 echo "Top speed: $top_speed"
